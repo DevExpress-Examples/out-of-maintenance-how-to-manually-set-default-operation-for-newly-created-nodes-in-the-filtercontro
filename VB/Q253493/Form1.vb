@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.Data
@@ -14,28 +13,29 @@ Imports DevExpress.Data.Filtering
 Imports Q253493.FilterControl
 
 Namespace Q253493
-	Partial Public Class Form1
-		Inherits Form
-		Private Const Field1 As String = "Field1"
-		Private Const Field2 As String = "Field2"
+    Partial Public Class Form1
+        Inherits Form
 
-		Public Sub New()
-			InitializeComponent()
-			InitializeUnboundColumns()
-		End Sub
+        Private Const Field1 As String = "Field1"
+        Private Const Field2 As String = "Field2"
 
-		Private Sub InitializeUnboundColumns()
-			filterControl.FilterColumns.Add(New UnboundFilterColumn("Column 1", Field1, GetType(String), textEditor, FilterColumnClauseClass.String))
-			filterControl.FilterColumns.Add(New UnboundFilterColumn("Column 2", Field2, GetType(Integer), spinEditor, FilterColumnClauseClass.Generic))
-		End Sub
+        Public Sub New()
+            InitializeComponent()
+            InitializeUnboundColumns()
+        End Sub
 
-		Private Sub OnGetDefaultOperation(ByVal sender As Object, ByVal e As GetDefaultOperationEventArgs) Handles filterControl.GetDefaultOperation
-			Select Case e.OperandProperty.Name
-				Case Field1
-					e.ClauseType = ClauseType.Contains
-				Case Field2
-					e.ClauseType = ClauseType.Greater
-			End Select
-		End Sub
-	End Class
+        Private Sub InitializeUnboundColumns()
+            filterControl.FilterColumns.Add(New UnboundFilterColumn("Column 1", Field1, GetType(String), textEditor, FilterColumnClauseClass.String))
+            filterControl.FilterColumns.Add(New UnboundFilterColumn("Column 2", Field2, GetType(Integer), spinEditor, FilterColumnClauseClass.Generic))
+        End Sub
+
+        Private Sub OnGetDefaultOperation(ByVal sender As Object, ByVal e As GetDefaultOperationEventArgs) Handles filterControl.GetDefaultOperation
+            Select Case e.OperandProperty.Name
+                Case Field1
+                    e.ClauseType = ClauseType.Contains
+                Case Field2
+                    e.ClauseType = ClauseType.Greater
+            End Select
+        End Sub
+    End Class
 End Namespace
