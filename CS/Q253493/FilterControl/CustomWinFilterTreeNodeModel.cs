@@ -6,8 +6,9 @@ namespace Q253493.FilterControl {
         public CustomWinFilterTreeNodeModel(DevExpress.XtraEditors.FilterControl control)
             : base(control) { }
 
-        protected override ClauseNode CreateDefaultClauseNode(IBoundProperty property) {
-            ClauseNode result = base.CreateDefaultClauseNode(property);
+        protected override ClauseNode CreateDefaultClauseNode(IBoundProperty property, IBoundPropertyCollection currentFilterProperties)
+        {
+            ClauseNode result = base.CreateDefaultClauseNode(property, FilterProperties);
             result.Operation = ((CustomFilterControl)Control).GetDefaultOperationCore(result.Property, result.Operation);
             return result;
         }
