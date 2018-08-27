@@ -9,7 +9,7 @@ Namespace Q253493.FilterControl
             MyBase.New(control)
         End Sub
 
-        Protected Overrides Function CreateDefaultClauseNode([property] As IBoundProperty, currentFilterProperties As IBoundPropertyCollection) As ClauseNode
+        Protected Overrides Function CreateDefaultClauseNode(ByVal [property] As IBoundProperty, ByVal currentFilterProperties As IBoundPropertyCollection) As ClauseNode
             Dim result As ClauseNode = MyBase.CreateDefaultClauseNode([property], FilterProperties)
             result.Operation = CType(Control, CustomFilterControl).GetDefaultOperationCore(result.Property, result.Operation)
             Return result
